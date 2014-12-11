@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 # <nbformat>3.0</nbformat>
 
-# <codecell>
-
-%cd ../person_course/
-
 # <headingcell level=4>
 
 # Import de-identification functions from datafly_v4.py
@@ -16,6 +12,10 @@ import numpy as np
 import pylab as P
 import pandas as pd
 from decimal import *
+
+# <headingcell level=4>
+
+# Additional functions not included in the datafly file.
 
 # <codecell>
 
@@ -49,7 +49,12 @@ def binAvg(cursor, tableName, nomVarName, numVarName):
     tableName: string, name of sqlite table
     nomVarName: string, name of variable with nominal categories
     numVarName: string, name of corresponding variable with numeric values
-    takes a column with nominal categories and 
+    For two columns, one a categorical string representation (generalization)
+    of the numeric values in another column (for example column A 
+    contains "10-15" and then column B contains the actual values 
+    that are in that bin), will give a bin-level average of the true values
+    in that bin. Designed as a tool to help improve the quality of a 
+    binned (aka 'generalized') dataset. 
     """
     newVarName = nomVarName+"_avg"
     getcontext().prec = 2
@@ -120,6 +125,15 @@ def textToFloat(txtList):
 # <codecell>
 
 def lDiversity(cursor, tableName, kkeyVar, senVar):
+    """
+    cursor: sqlite3 cursor object                                                                                                                                                                
+    tableName: string, name of main table
+    kkeyVar: string, name of variable that contains concatenation of all quasi-identifiers
+    senVar: string, name of variable whose value you do not want disclosed
+    Checks a dataset for "l-diversity", namely that in a k-anonymous block of records
+    if the sensitive value is homogeonous, then you have effectively disclosed the 
+    value of the sensitive record. Bluntly sets sensitive variable to blank if not l-diverse
+    """
     qry = selUnique(cursor, tableName, kkeyVar)
     for i in qry:
         cursor.execute('SELECT '+senVar+' FROM '+tableName+' WHERE '+kkeyVar+' = "'+i[0]+'" GROUP BY '+senVar)
