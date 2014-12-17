@@ -80,4 +80,48 @@ obliterated.
    with other information may prove uniquely identifying. Example is gender
    or country of origin.
 
+*********************
+*General User Manual*
+*********************
 
+This is intended as a VERY broad overview of the process as it was designed.
+For more information, read the documents accompanying the data release, read
+the comments in the code, or email daries@mit.edu.
+
+1) The IPython Notebook inclued in this repository is intended as the step-by-step
+manual to the de-identification process. It does not use all of the possible functions
+but it does the minimum and is basically what was done for the first year of data.
+Start there.
+
+2) The De_id_functions.py was the first code written, so it includes functions 
+that may be helpful but may not be referenced in the IPython Notebook. It is commented
+fairly well, so be sure to read through it to see if there is a function there you 
+may want to use.
+
+3) This was not written as, nor should it be, a push-button process. The process
+involves making a change, evaluating the results, and then choosing the next course of action.
+
+4) If you have a scale variable that you are treating as a quasi-identifier
+but want to reduce granularity in order to increase k-anonymity, use the tailFinder
+and the numBinner functions together, in that order. TailFinder will show you a rudimentary
+distribution of the tails based upon the paramaters you give it, so that you can choose where
+to cut off the tails and replace them with strings like "<10". After trimming the tails into
+these text categories, numBinner will allow you to then group the middle of the distribution
+into buckets of uniform size. It will skip non-integer values, so the tails will be maintained.
+Think of bucket size when you trim tails, so you don't end up with a funky-sized bucket
+at the end. The code is not sophisticated enough to always get it right, so you need to 
+set it up correctly so that the bins and the tails match up perfectly.
+
+5) Per a suggestion from Andrew Ho (HarvardGSE), instead of just the strings 
+that describe the endpoints of the bins, you can create a second variable
+using binAvg function that will give the true mean of the members of a bin.
+
+6) The Utility Matrix can help keep track of how much values have changed
+as a result of the de-identification process. Run it many times and measure the
+difference from the original. This process is in the IPython Notebook.
+
+7) Be sure to delete any non-k-anonymous records before exporting.
+
+8) Export only the coluns that are properly de-identified.
+
+Good luck!
