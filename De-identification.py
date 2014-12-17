@@ -7,7 +7,7 @@
 
 # <codecell>
 
-from datafly_v4 import *
+from de_id_functions import *
 import numpy as np
 import pylab as P
 import pandas as pd
@@ -15,7 +15,7 @@ from decimal import *
 
 # <headingcell level=4>
 
-# Additional functions not included in the datafly file.
+# Additional functions not included in the de_id_functions.py file.
 
 # <codecell>
 
@@ -361,20 +361,8 @@ k=5
 
 # <codecell>
 
-#the file as released
+#choose a name for the database and then connect to it
 db = 'kaPC_1-17-4-17-14-3.db'
-c = dbOpen(db)
-
-# <codecell>
-
-#no changes to data
-db = 'kaPC_1-17-4-17-14-orig.db'
-c = dbOpen(db)
-
-# <codecell>
-
-#use binning for the article
-db = 'kaPC_1-17-4-17-14-alt1.db'
 c = dbOpen(db)
 
 # <headingcell level=4>
@@ -392,6 +380,10 @@ sourceLoad(c,file,table)
 # <codecell>
 
 sourceLoad(c,file,"original")
+
+# <headingcell level=4>
+
+# Drop the timestamp from the date fields.
 
 # <codecell>
 
@@ -459,7 +451,7 @@ c.execute("DELETE FROM original WHERE (roles = 'instructor' or roles = 'staff')"
 
 # <headingcell level=4>
 
-# Generate anonymous userIDs
+# Generate anonymous userIDs, choose prefix that will describe the data release, here 'MHxPC13' refers to MITx/HarvardX Person-Course AY2013
 
 # <codecell>
 
@@ -516,7 +508,7 @@ uMatrix - preUmatrix
 
 # <headingcell level=4>
 
-# Establish user-wise k-anonymity
+# Establish user-wise k-anonymity (the removal of registrations that uniquely identify someone based on combination of courses registered for)
 
 # <codecell>
 
@@ -637,31 +629,13 @@ selUnique(c,table,"LoE_DI")
 #change 0 values to text in order to exclude them from the binning procedure
 c.execute("UPDATE source SET nforum_posts = 'zero' WHERE nforum_posts = '0'")
 
-# <codecell>
+# <headingcell level=4>
 
-dbClose(c)
-
-# <markdowncell>
-
-# START HERE JUN 17 AM: NEED TO RELOAD FUNCTIONS TO TAKE IN NEW TAILFINDER AND DO TAILS ON NFORUM_POSTS AND THEN BIN.
+# The Tailfinder function can help to group a long tail of one variable into a text field (see more documentation in the de_id_functions.py file)
 
 # <codecell>
 
 tailFinder(c,table,"nforum_posts",5)
-
-# <codecell>
-
-c.execute("UPDATE source SET nforum_posts = '0' WHERE nforum_posts = 'zero'")
-c.execute("UPDATE source SET nforum_posts_DI = 'one' WHERE nforum_posts = '1'")
-c.execute("UPDATE source SET nforum_posts_DI = 'two' WHERE nforum_posts = '2'")
-c.execute("UPDATE source SET nforum_posts_DI = 'three' WHERE nforum_posts = '3'")
-c.execute("UPDATE source SET nforum_posts_DI = 'four' WHERE nforum_posts = '4'")
-c.execute("UPDATE source SET nforum_posts_DI = 'five' WHERE nforum_posts = '5'")
-c.execute("UPDATE source SET nforum_posts_DI = 'six' WHERE nforum_posts = '6'")
-c.execute("UPDATE source SET nforum_posts_DI = 'seven' WHERE nforum_posts = '7'")
-c.execute("UPDATE source SET nforum_posts_DI = 'eight' WHERE nforum_posts = '8'")
-c.execute("UPDATE source SET nforum_posts_DI = 'nine' WHERE nforum_posts = '9'")
-c.execute("UPDATE source SET nforum_posts_DI = 'ten' WHERE nforum_posts = '10'")
 
 # <codecell>
 
@@ -694,6 +668,10 @@ kAnonWrap(c,table,k)
 # <codecell>
 
 lDiversity(c,table,"kkey","grade")
+
+# <headingcell level=4>
+
+# Needed an incomplete flag for internally inconsistent records. This is described more in the documentation with the data release.
 
 # <codecell>
 
@@ -775,17 +753,21 @@ for row in qry2:
 
 selUnique(c,table,"kCheckFlag")
 
+# <headingcell level=4>
+
+# The fateful step where non-k-anonymous records are removed.
+
 # <codecell>
 
 c.execute("DELETE FROM source WHERE kCheckFlag = 'False'")
 
+# <headingcell level=4>
+
+# Be careful to only export the columns you are ok with others seeing. Don't export IP address, original user_id, etc.
+
 # <codecell>
 
 csvExport(c,table,"HMXPC13_DI_binned_061714.csv")
-
-# <codecell>
-
-selUnique(c,table,"YoB_DI")
 
 # <headingcell level=1>
 
@@ -937,9 +919,14 @@ selUnique(c,table,"YoB")
 
 # <codecell>
 
+uMatrix - preUmatrix
+#This one taken after K-Anonymous
+
+# <headingcell level=4>
+
+# Good to close the db between uses, it compacts the data and prevents an error if you leave a cursor dangling.
 
 # <codecell>
 
-uMatrix - preUmatrix
-#This one taken after K-Anonymous
+dbClose(db)
 

@@ -1,0 +1,933 @@
+(dp1
+V
+VUnknown/Other
+p2
+sVCanada
+p3
+VOther North & Central Amer., Caribbean
+p4
+sVGuinea-Bissau
+p5
+VOther Africa
+p6
+sVMontenegro
+p7
+VOther Europe
+p8
+sVLithuania
+p9
+VOther Europe
+p10
+sVCambodia
+p11
+VOther South Asia
+p12
+sVSaint Helena, Ascension and Tristan da Cunha
+p13
+VOther Africa
+p14
+sVSwitzerland
+p15
+VOther Europe
+p16
+sVEthiopia
+p17
+VOther Africa
+p18
+sVAruba
+p19
+VOther North & Central Amer., Caribbean
+p20
+sVSri Lanka
+p21
+VOther South Asia
+p22
+sVSwaziland
+p23
+VOther Africa
+p24
+sVArgentina
+p25
+VOther South America
+p26
+sVCameroon
+p27
+VOther Africa
+p28
+sVBurkina Faso
+p29
+VOther Africa
+p30
+sVTurkmenistan
+p31
+VOther Middle East/Central Asia
+p32
+sVGhana
+p33
+VOther Africa
+p34
+sVSaudi Arabia
+p35
+VOther Middle East/Central Asia
+p36
+sVRwanda
+p37
+VOther Africa
+p38
+sVJapan
+p39
+VOther East Asia
+p40
+sVAmerican Samoa
+p41
+VOther Oceania
+p42
+sVMontserrat
+p43
+VOther North & Central Amer., Caribbean
+p44
+sVNorthern Mariana Islands
+p45
+VOther Oceania
+p46
+sVPitcairn
+p47
+VOther Oceania
+p48
+sVGuatemala
+p49
+VOther North & Central Amer., Caribbean
+p50
+sVZimbabwe
+p51
+VOther Africa
+p52
+sVBosnia and Herzegovina
+p53
+VOther Europe
+p54
+sVKuwait
+p55
+VOther Middle East/Central Asia
+p56
+sVRussian Federation
+p57
+VOther Europe
+p58
+sVJordan
+p59
+VOther Middle East/Central Asia
+p60
+sVBonaire, Sint Eustatius and Saba
+p61
+VOther North & Central Amer., Caribbean
+p62
+sVVirgin Islands, British
+p63
+VOther North & Central Amer., Caribbean
+p64
+sVDominica
+p65
+VOther North & Central Amer., Caribbean
+p66
+sVLiberia
+p67
+VOther Africa
+p68
+sVMaldives
+p69
+VOther East Asia
+p70
+sVMicronesia, Federated States of
+p71
+VOther Oceania
+p72
+sVJamaica
+p73
+VOther North & Central Amer., Caribbean
+p74
+sVOman
+p75
+VOther Middle East/Central Asia
+p76
+sVMartinique
+p77
+VOther North & Central Amer., Caribbean
+p78
+sVAlbania
+p79
+VOther Europe
+p80
+sVGabon
+p81
+VOther Africa
+p82
+sVMonaco
+p83
+VOther Europe
+p84
+sVWallis and Futuna
+p85
+VOther Oceania
+p86
+sVNew Zealand
+p87
+VOther Oceania
+p88
+sVVirgin Islands, U.S.
+p89
+VOther North & Central Amer., Caribbean
+p90
+sVJersey
+p91
+VOther Europe
+p92
+sVBahamas
+p93
+VOther North & Central Amer., Caribbean
+p94
+sVYemen
+p95
+VOther Middle East/Central Asia
+p96
+sVGreenland
+p97
+VOther North & Central Amer., Caribbean
+p98
+sVSamoa
+p99
+VOther Oceania
+p100
+sVUnited Arab Emirates
+p101
+VOther Middle East/Central Asia
+p102
+sVGuam
+p103
+VOther Oceania
+p104
+sVIndia
+p105
+VOther South Asia
+p106
+sVAzerbaijan
+p107
+VOther Middle East/Central Asia
+p108
+sVLesotho
+p109
+VOther Africa
+p110
+sVSaint Vincent and the Grenadines
+p111
+VOther North & Central Amer., Caribbean
+p112
+sVKenya
+p113
+VOther Africa
+p114
+sVMacao
+p115
+VOther East Asia
+p116
+sVTurkey
+p117
+VOther Middle East/Central Asia
+p118
+sVAfghanistan
+p119
+VOther Middle East/Central Asia
+p120
+sVBangladesh
+p121
+VOther South Asia
+p122
+sVMauritania
+p123
+VOther Africa
+p124
+sVSolomon Islands
+p125
+VOther Oceania
+p126
+sVTurks and Caicos Islands
+p127
+VOther North & Central Amer., Caribbean
+p128
+sVSaint Lucia
+p129
+VOther North & Central Amer., Caribbean
+p130
+sVSan Marino
+p131
+VOther Europe
+p132
+sVFrench Polynesia
+p133
+VOther Oceania
+p134
+sVFrance
+p135
+VOther Europe
+p136
+sVSyrian Arab Republic
+p137
+VOther Middle East/Central Asia
+p138
+sVBermuda
+p139
+VOther North & Central Amer., Caribbean
+p140
+sVSlovakia
+p141
+VOther Europe
+p142
+sVSomalia
+p143
+VOther Africa
+p144
+sVPeru
+p145
+VOther South America
+p146
+sVVanuatu
+p147
+VOther Oceania
+p148
+sVSeychelles
+p149
+VOther Africa
+p150
+sVNorway
+p151
+VOther Europe
+p152
+sVMalawi
+p153
+VOther Africa
+p154
+sVCook Islands
+p155
+VOther Oceania
+p156
+sVBenin
+p157
+VOther Africa
+p158
+sVCuba
+p159
+VOther North & Central Amer., Caribbean
+p160
+sVIran, Islamic Republic of
+p161
+VOther Middle East/Central Asia
+p162
+sVSaint Kitts and Nevis
+p163
+VOther North & Central Amer., Caribbean
+p164
+sVTogo
+p165
+VOther Africa
+p166
+sVChina
+p167
+VOther East Asia
+p168
+sVArmenia
+p169
+VOther Europe
+p170
+sVTimor-Leste
+p171
+VOther Africa
+p172
+sVDominican Republic
+p173
+VOther North & Central Amer., Caribbean
+p174
+sVUkraine
+p175
+VOther Europe
+p176
+sVBahrain
+p177
+VOther Middle East/Central Asia
+p178
+sVTonga
+p179
+VOther Oceania
+p180
+sVFinland
+p181
+VOther Europe
+p182
+sVLibya
+p183
+VOther Africa
+p184
+sVCayman Islands
+p185
+VOther North & Central Amer., Caribbean
+p186
+sVCentral African Republic
+p187
+VOther Africa
+p188
+sVMauritius
+p189
+VOther Africa
+p190
+sVTajikistan
+p191
+VOther Middle East/Central Asia
+p192
+sVLiechtenstein
+p193
+VOther Europe
+p194
+sVBelarus
+p195
+VOther Europe
+p196
+sVMali
+p197
+VOther Africa
+p198
+sVEU
+p199
+VOther Europe
+p200
+sVBulgaria
+p201
+VOther Europe
+p202
+sVPalestine, State of
+p203
+VOther Middle East/Central Asia
+p204
+sVUnited States
+p205
+VOther North & Central Amer., Caribbean
+p206
+sVRomania
+p207
+VOther Europe
+p208
+sVAngola
+p209
+VOther Africa
+p210
+sVChad
+p211
+VOther Africa
+p212
+sVSouth Africa
+p213
+VOther Africa
+p214
+sVTokelau
+p215
+VOther Oceania
+p216
+sVCyprus
+p217
+VOther Europe
+p218
+sVBrunei Darussalam
+p219
+VOther South Asia
+p220
+sVQatar
+p221
+VOther Middle East/Central Asia
+p222
+sVMalaysia
+p223
+VOther South Asia
+p224
+sVAustria
+p225
+VOther Europe
+p226
+sVMozambique
+p227
+VOther Africa
+p228
+sVUganda
+p229
+VOther Africa
+p230
+sVHungary
+p231
+VOther Europe
+p232
+sVNiger
+p233
+VOther Africa
+p234
+sVIsle of Man
+p235
+VOther Europe
+p236
+sVBrazil
+p237
+VOther South America
+p238
+sVFaroe Islands
+p239
+VOther Europe
+p240
+sVGuinea
+p241
+VOther Africa
+p242
+sVPanama
+p243
+VOther North & Central Amer., Caribbean
+p244
+sVKorea, Republic of
+p245
+VOther East Asia
+p246
+sVCosta Rica
+p247
+VOther North & Central Amer., Caribbean
+p248
+sVLuxembourg
+p249
+VOther Europe
+p250
+sVCape Verde
+p251
+VOther Africa
+p252
+sVAndorra
+p253
+VOther Europe
+p254
+sVGibraltar
+p255
+VOther Europe
+p256
+sVIreland
+p257
+VOther Europe
+p258
+sVPakistan
+p259
+VOther Middle East/Central Asia
+p260
+sVPalau
+p261
+VOther Oceania
+p262
+sVNigeria
+p263
+VOther Africa
+p264
+sVEcuador
+p265
+VOther South America
+p266
+sVCzech Republic
+p267
+VOther Europe
+p268
+sVMacedonia, Republic of
+p269
+VOther Europe
+p270
+sVViet Nam
+p271
+VOther South Asia
+p272
+sVAustralia
+p273
+VOther Oceania
+p274
+sVAlgeria
+p275
+VOther Africa
+p276
+sVSlovenia
+p277
+VOther Africa
+p278
+sVEl Salvador
+p279
+VOther North & Central Amer., Caribbean
+p280
+sVTuvalu
+p281
+VOther Oceania
+p282
+sVMarshall Islands
+p283
+VOther Oceania
+p284
+sVChile
+p285
+VOther South America
+p286
+sVPuerto Rico
+p287
+VOther North & Central Amer., Caribbean
+p288
+sVBelgium
+p289
+VOther Europe
+p290
+sVKiribati
+p291
+VOther Oceania
+p292
+sVHaiti
+p293
+VOther North & Central Amer., Caribbean
+p294
+sVBelize
+p295
+VOther North & Central Amer., Caribbean
+p296
+sVHong Kong
+p297
+VOther East Asia
+p298
+sVSierra Leone
+p299
+VOther Africa
+p300
+sVGeorgia
+p301
+VOther Middle East/Central Asia
+p302
+sVLao People's Democratic Republic
+p303
+VOther South Asia
+p304
+sVGambia
+p305
+VOther Africa
+p306
+sVPhilippines
+p307
+VOther South Asia
+p308
+sVMorocco
+p309
+VOther Africa
+p310
+sVCroatia
+p311
+VOther Europe
+p312
+sVMongolia
+p313
+VOther East Asia
+p314
+sVGuernsey
+p315
+VOther Europe
+p316
+sVThailand
+p317
+VOther South Asia
+p318
+sVNamibia
+p319
+VOther Africa
+p320
+sVGrenada
+p321
+VOther North & Central Amer., Caribbean
+p322
+sVTaiwan, Province of China
+p323
+VOther East Asia
+p324
+sVÅland Islands
+p325
+VOther Europe
+p326
+sVIraq
+p327
+VOther Middle East/Central Asia
+p328
+sVTanzania, United Republic of
+p329
+VOther Africa
+p330
+sVPortugal
+p331
+VOther Europe
+p332
+sVEstonia
+p333
+VOther Europe
+p334
+sVUruguay
+p335
+VOther South America
+p336
+sVSweden
+p337
+VOther Europe
+p338
+sVMexico
+p339
+VOther North & Central Amer., Caribbean
+p340
+sVLebanon
+p341
+VOther Middle East/Central Asia
+p342
+sVUzbekistan
+p343
+VOther Middle East/Central Asia
+p344
+sVTunisia
+p345
+VOther Africa
+p346
+sVDjibouti
+p347
+VOther Africa
+p348
+sVHoly See (Vatican City State)
+p349
+VOther Europe
+p350
+sVAntigua and Barbuda
+p351
+VOther North & Central Amer., Caribbean
+p352
+sVSpain
+p353
+VOther Europe
+p354
+sVColombia
+p355
+VOther South America
+p356
+sVBurundi
+p357
+VOther Africa
+p358
+sVFiji
+p359
+VOther Oceania
+p360
+sVBarbados
+p361
+VOther North & Central Amer., Caribbean
+p362
+sVMadagascar
+p363
+VOther Africa
+p364
+sVItaly
+p365
+VOther Europe
+p366
+sVBhutan
+p367
+VOther South Asia
+p368
+sVSudan
+p369
+VOther Africa
+p370
+sVBolivia, Plurinational State of
+p371
+VOther South America
+p372
+sVNepal
+p373
+VOther South Asia
+p374
+sVMalta
+p375
+VOther Europe
+p376
+sVNetherlands
+p377
+VOther Europe
+p378
+sVVenezuela, Bolivarian Republic of
+p379
+VOther South America
+p380
+sVSuriname
+p381
+VOther South America
+p382
+sVAnguilla
+p383
+VOther North & Central Amer., Caribbean
+p384
+sVIsrael
+p385
+VOther Middle East/Central Asia
+p386
+sVRéunion
+p387
+VOther Africa
+p388
+sVIndonesia
+p389
+VOther South Asia
+p390
+sVIceland
+p391
+VOther Europe
+p392
+sVZambia
+p393
+VOther Africa
+p394
+sVSenegal
+p395
+VOther Africa
+p396
+sVPapua New Guinea
+p397
+VOther Oceania
+p398
+sVA1
+p399
+VUnknown/Other
+p400
+sVTrinidad and Tobago
+p401
+VOther North & Central Amer., Caribbean
+p402
+sVA2
+p403
+VUnknown/Other
+p404
+sVGermany
+p405
+VOther Europe
+p406
+sVDenmark
+p407
+VOther Europe
+p408
+sVKazakhstan
+p409
+VOther Middle East/Central Asia
+p410
+sVPoland
+p411
+VOther Europe
+p412
+sVMoldova, Republic of
+p413
+VOther Europe
+p414
+sVEritrea
+p415
+VOther Africa
+p416
+sVKyrgyzstan
+p417
+VOther Middle East/Central Asia
+p418
+sVCongo, The Democratic Republic of the
+p419
+VOther Africa
+p420
+sVMayotte
+p421
+VOther Africa
+p422
+sVKorea, Democratic People's Republic of
+p423
+VOther East Asia
+p424
+sVNew Caledonia
+p425
+VOther Oceania
+p426
+sVAP
+p427
+VUnknown/Other
+p428
+sVLatvia
+p429
+VOther Europe
+p430
+sVSouth Sudan
+p431
+VOther Africa
+p432
+sVGuyana
+p433
+VOther South America
+p434
+sVGuadeloupe
+p435
+VOther North & Central Amer., Caribbean
+p436
+sVCôte d'Ivoire
+p437
+VOther Africa
+p438
+sVHonduras
+p439
+VOther North & Central Amer., Caribbean
+p440
+sVMyanmar
+p441
+VOther South Asia
+p442
+sVEquatorial Guinea
+p443
+VOther Africa
+p444
+sVEgypt
+p445
+VOther Africa
+p446
+sVNicaragua
+p447
+VOther North & Central Amer., Caribbean
+p448
+sVSingapore
+p449
+VOther South Asia
+p450
+sVSerbia
+p451
+VOther Europe
+p452
+sVBotswana
+p453
+VOther Africa
+p454
+sVUnited Kingdom
+p455
+VOther Europe
+p456
+sVCongo
+p457
+VOther Africa
+p458
+sVGreece
+p459
+VOther Europe
+p460
+sVParaguay
+p461
+VOther South America
+p462
+sVFrench Guiana
+p463
+VOther South America
+p464
+sVComoros
+p465
+VOther Africa
+p466
+s.

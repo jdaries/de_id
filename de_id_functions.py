@@ -2,11 +2,11 @@
 #
 # author: Jon Daries (daries@mit.edu)
 #
-# title: dataflyX.py
+# title: de_id_functions.py
 #
-# version: 4.0
+# version: 5.0
 #
-# date last modified: 3/17/2014
+# date last modified: 12/17/2014
 #
 # desc: Based on Latanya Sweeney's 'datafly' algorithm
 #       but with different implementation specific to the
@@ -14,6 +14,8 @@
 #       Contains functions for loading data from .csv
 #       Generalizing and de-identifying variables
 #       And checking for k-anonymity across variables
+#       To be used as helper functions to the De-identification.ipynb
+#       IPython Notebook
 #       
 ##################################
 
@@ -973,30 +975,6 @@ def colToList(queryResult):
 #
 ######################
     
-def exportFlagger(cursor,tableName,k):
-    """
-    cursor: sqlite3 cursor object
-    tableName: string, name of table where variable lives
-    k: minimum n for k-anonymity
-    marks records as eligible for export into a k-anonymous dataset
-    CAUTION: after running this, kCheckFlag will not serve original purpose
-    """
-    try:
-        addColumn(cursor,tableName,"export_flag")
-        varIndex(cursor,tableName,"export_flag")
-    except:
-        simpleUpdate(cursor,tableName,"export_flag","NULL")
-    cursor.execute("SELECT kkey, SUM(Count) FROM "+tableName+" WHERE kCheckFlag = 'False' GROUP BY kkey")
-    qry = cursor.fetchall()
-    exportDict = {}
-    for row in qry:
-        if row[1]<k:
-            exportDict[row[0]]='False'
-        else:
-            exportDict[row[0]]='True'
-    dataUpdate(cursor,tableName,"kkey",exportDict,True,"export_flag")
-    cursor.execute("UPDATE "+tableName+" SET export_flag = 'True' WHERE kCheckFlag = 'True'")
-    cursor.execute("UPDATE "+tableName+" SET kCheckFlag = 'True' WHERE export_flag = 'True'")
     
 def csvExport(cursor, tableName, outFileName):
     """
@@ -1021,135 +999,3 @@ def csvExport(cursor, tableName, outFileName):
             rowList = list(row)
             fileWriter.writerow(rowList)
 
-#####################
-# Active Code below this
-####################
-
-#open database, change file path here
-#path in relation to location of this code file
-
-
-if __name__ == "__main__":
-    file = "person_course_harvardxdb+mitxdb_2014_01_17a.csv"
-    db = 'kaPC_1-17-2-26.db'
-    c = dbOpen(db)
-    table = "source"
-    userVar = "user_id"
-    courseVar = "course_id"
-    countryVar = "final_cc"
-    k=5
-    with open("deidentify_log.txt","w") as outFile:
-        outFile.write("Log of de-identifcation, k = "+str(k)+"\n")
-        outFile.write("Date: "+str(datetime.datetime.now().date())+"\n")
-        outFile.write("Time: "+str(datetime.datetime.now().time())+"\n")
-        outFile.write("Loading "+file+" into database "+db+"\n")
-        print "Log of de-identifcation, k = "+str(k)+"\n"
-        print "Date: "+str(datetime.datetime.now().date())+"\n"
-        print "Time: "+str(datetime.datetime.now().time())
-        print "Loading "+file+" into database "+db
-        ### load new file
-        sourceLoad(c,file,table)
-        c.execute("SELECT SUM(Count) FROM "+table)
-        qry = c.fetchall()
-        outFile.write("Begin with "+str(qry[0][0])+" rows in file.\n")
-        print "Begin with "+str(qry[0][0])+" rows in file.\n"
-        ### good to check the variables
-        c.execute("Pragma table_info(source)")
-        qry = c.fetchall()
-        outFile.write("Variable names of loaded file: \n")
-        for row in qry:
-            outFile.write(str(row)+"\n")
-        ### convert country codes into country names
-        countryNamer(c,table,countryVar)
-        ### import continents from file and insert as new variable 'continent'
-        contImport(c, table, "country_continent", countryVar+"_cname")
-        ### delete instructors and staff
-        c.execute("DELETE FROM "+table+" WHERE (roles = 'instructor' or roles = 'staff')")
-        ### generate new userids
-        idGen(c,table,userVar,"MHxPC13")
-        ### get baseline entropy of qi variables
-        trash1, trash2 = kAnonWrap(c,table,k)
-        qry = selUnique(c,table,"kkey")
-        beginEntropy = shannonEntropy(qry)
-        outFile.write("Beginning entropy: "+str(beginEntropy)+"\n")
-        print "Beginning entropy: "+str(beginEntropy)+"\n"
-        ### first establish user k-anonymity (combinations of courses)
-        courseDrops = userKanon(c, table, userVar, courseVar, k)
-        for course in courseDrops.keys():
-            print "Dropped "+str(courseDrops[course])+" rows for course "+course
-            outFile.write("Dropped "+str(courseDrops[course])+" rows for course "+course+"\n")
-        c.execute("SELECT SUM(Count) FROM "+table+" WHERE uniqUserFlag = 'True'")
-        qry = c.fetchall()
-        outFile.write("Deleted "+str(qry[0][0])+" additional records for users with unique combinations of courses.\n")
-        print "Deleted "+str(qry[0][0])+" additional records for users with unique combinations of courses.\n"
-        c.execute("DELETE FROM "+table+" WHERE uniqUserFlag = 'True'")
-        ### get a baseline measure for k-anonmyity
-        status, value = kAnonWrap(c,table,k)
-        print "Percent of records that will need to be deleted to be k-anonymous: "+str(value)+"\n"
-        outFile.write( "Percent of records that will need to be deleted to be k-anonymous: "+str(value)+"\n")
-        ### do the first round of generalizing, pretty mild
-        initContVal = 2000
-        contSwap(c,table,"final_cc_cname","continent",initContVal)
-        print "Inserting continent names for countries with fewer than "+str(initContVal)
-        outFile.write("Inserting continent names for countries with fewer than "+str(initContVal)+"\n")
-        tailFinder(c,table,"YoB",1000,outFile)
-        print "Binning YoB into categories of size 2"
-        outFile.write("Binning YoB into categories of size 2\n")
-        numBinner(c,table,"YoB_DI",2)
-        tailFinder(c,table,"nforum_posts",1000,outFile)
-        numBinner(c,table,"nforum_posts_DI")
-        c.execute("UPDATE "+table+" SET nforum_posts_DI = '0' WHERE nforum_posts_DI = '<= 0'")
-        print "Binning nforum_posts into categories of size 5"
-        outFile.write("Binning nforum_posts into categories of size 5\n")
-        ### Will treat NA and blank as the same for purposes of this
-        try:
-            addColumn(c,table,"gender_DI")
-            varIndex(c,table,"gender_DI")
-            simpleUpdate(c,table,"gender_DI","NULL")
-        except:
-            c.execute("UPDATE "+table+" SET gender_DI = gender")
-            c.execute("UPDATE "+table+" SET gender_DI = '' WHERE gender_DI = 'NA'")
-        ### now run through the iterKcheck for the first time
-        print "checking k-anonymity for records with some null values"
-        print datetime.datetime.now().time()
-        outFile.write("checking k-anonymity for records with some null values\n")
-        outFile.write(str(datetime.datetime.now().time())+"\n")
-        iterKcheck(c,table,k)
-        ### see how the first round impacted the results
-        varList = [(0,"course_id"),(12,"gender_DI"),(34,"final_cc_cname_DI"),(35,"YoB_DI"),(36,"nforum_posts_DI")]
-        kkeyUpdate(c,table,varList)
-        exportFlagger(c,table,k)
-        qry = selUnique(c,table,"export_flag")
-        value = float(qry[0][1])/float(qry[1][1])
-        print "Percent of rows still not k-anonymous: "+str(value)
-        outFile.write("Percent of rows still not k-anonymous"+str(value)+"\n")
-        ### NOTE: used gender_DI for purposes of analysis, but can just export gender
-        ### now begin censoring rows that are still not k-anonymous
-        for var in ["continent","YoB_DI","nforum_posts_DI","gender"]:
-            if var == "continent":
-                contCensor(c,table,"final_cc_cname","continent")
-                print "censoring countries of remaining rows"
-                outFile.write("Replacing country name with continent name for remaining rows\n")
-                kkeyUpdate(c,table,varList)
-                exportFlagger(c,table,k)
-                qry = selUnique(c,table,"export_flag")
-                value = float(qry[0][1])/float(qry[1][1])
-                print "Percent of rows still not k-anonymous: "+str(value)
-                outFile.write("Percent of rows still not k-anonymous"+str(value)+"\n")
-            else:
-                censor(c,table,var)
-                kkeyUpdate(c,table,varList)
-                exportFlagger(c,table,k)
-                qry = selUnique(c,table,"export_flag")
-                value = float(qry[0][1])/float(qry[1][1])
-                print "Percent of rows still not k-anonymous: "+str(value)
-                outFile.write("Percent of rows still not k-anonymous"+str(value)+"\n")
-        c.execute("DELETE FROM source WHERE export_flag = 'False'")
-        qry = selUnique(c,table,"kkey")
-        finalEntropy = shannonEntropy(qry)
-        print "Final entropy: "+str(finalEntropy)
-        outFile.write("Final entropy: "+str(finalEntropy)+"\n")
-        dateSplit(c,table,"start_time")
-        dateSplit(c,table,"last_event")
-        csvExport(c,table,"person-course-1-17-DI.csv")
-        

@@ -43,9 +43,9 @@ obliterated.
 +A pickled dictionary of mapping is included here.
 
 
-*****************************
-*   Useful Definitions      *
-*****************************
+*********************
+*Useful Definitions *
+*********************
 
 1) Utility values
    This term is taken from a Cynthia Dwork (Microsoft Research)
@@ -63,5 +63,21 @@ obliterated.
    formula.
 
 3) K-anonymity
+   See Latanya Sweeney's work. A dataset is k-anonymous if 
+   you cannot distinguish any one record from k-1 other records
+   based on identifiers or quasi-identifiers.
 
 4) L-diversity
+   Even if a dataset is k-anonymous, if it is not l-diverse then
+   sensitive information can still be disclosed. Within a k-anonymous
+   block, even if you cannot distinguish any individual record from
+   another based on quasi-identifiers, if the value of any sensitive
+   variable is uniform, then you know the value for all individuals
+   matching that set of quasi-identifiers.
+
+5) Quasi-identifier
+   A variable that alone may not identify an individual, but in combiation
+   with other information may prove uniquely identifying. Example is gender
+   or country of origin.
+
+
